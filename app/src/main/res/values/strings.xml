@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Inventory QR Scanner</string>
+    <string name="imagedesc">Image Description</string>
+
+
+    <string name="user">Pengguna</string>
+    <string name="welcome">Selamat Datang !</string>
+    <string name="hint">Search</string>
+    <string name="scan">Scan</string>
+    <string name="showall">Tampilkan Semua</string>
+
+    <string name="item"> Barang </string>
+</resources>

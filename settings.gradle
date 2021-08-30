@@ -1,0 +1,2 @@
+rootProject.name = "Inventory QR Scanner"
+include ':app'
