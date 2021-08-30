@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/button_bg.xml" value="0.240625" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/create_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/ic_search.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/list_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/search_bg.xml" value="0.240625" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/textbox_bg.xml" value="0.240625" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_create.xml" value="0.22447916666666667" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_home.xml" value="0.22447916666666667" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/adapter_item.xml" value="0.22447916666666667" />
       </map>

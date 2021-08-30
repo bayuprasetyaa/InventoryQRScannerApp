@@ -8,6 +8,15 @@
     <string name="hint">Search</string>
     <string name="scan">Scan</string>
     <string name="showall">Tampilkan Semua</string>
-
     <string name="item"> Barang </string>
+
+    <string name="detail">Detail Produk</string>
+    <string name="number">ID Produk</string>
+    <string name="product">Nama Produk</string>
+    <string name="amount">Jumlah</string>
+    <string name="date">Tanggal Kadaluwarsa</string>
+    <string name="type">Jenis Bahaya</string>
+    <string name="location">Tempat Penyimpanan</string>
+    <string name="desc">Deskripsi</string>
+    <string name="save">SIMPAN</string>
 </resources>

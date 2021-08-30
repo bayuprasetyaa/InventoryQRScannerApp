@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InventoryQRScanner">
         <activity
+            android:name=".activity.CreateActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.HomeActivity"
             android:exported="true">
             <intent-filter>

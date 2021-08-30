@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/product_detail"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreateActivity"
+    android:background="@color/teal_700">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/create_bg">
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/detail"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="24sp"
+            android:textColor="@color/teal_700"/>
+
+        <TextView
+            android:id="@+id/label_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/number"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detail"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_id"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_id"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="000"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/product"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_id"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_product"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_product"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Produk"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/amount"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_id"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_amount"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="0"
+            android:textAlignment="textEnd"
+            android:inputType="number"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/date"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_product"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_date"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_date"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="dd/mm/yyyy"
+            android:drawableStart="@drawable/ic_date"
+            android:textAlignment="textEnd"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/type"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_date"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_type"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_type"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Jenis"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/location"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_type"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_location"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_location"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Lokasi"
+            android:inputType="text"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/label_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/desc"
+            android:textColor="@color/teal_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_location"
+            android:layout_marginTop="25dp"/>
+
+        <EditText
+            android:id="@+id/edit_desc"
+            android:background="@drawable/textbox_bg"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/label_desc"
+            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:lines="4"
+            android:maxLines="4"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="16sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:cornerRadius="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_desc"
+            android:layout_marginTop="15dp"
+            android:text="@string/save"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
