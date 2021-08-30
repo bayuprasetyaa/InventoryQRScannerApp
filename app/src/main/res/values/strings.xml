@@ -19,4 +19,7 @@
     <string name="location">Tempat Penyimpanan</string>
     <string name="desc">Deskripsi</string>
     <string name="save">SIMPAN</string>
+
+    <string name="choose_date">Pilih Tanggal</string>
+
 </resources>
