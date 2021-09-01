@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "21670204169",
+    "project_id": "inventorymanagement-39b4e",
+    "storage_bucket": "inventorymanagement-39b4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21670204169:android:651f4e26eb4fa6943339d8",
+        "android_client_info": {
+          "package_name": "com.ikm.inventoryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrMv8CuOpWcuZwDnqHeeJlcD8egBfZjy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21670204169:android:362af081004b17413339d8",
+        "android_client_info": {
+          "package_name": "com.ikm.inventoryqrscanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrMv8CuOpWcuZwDnqHeeJlcD8egBfZjy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:21670204169:android:af3f57ab563538993339d8",
+        "android_client_info": {
+          "package_name": "com.mcc.inventorymanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrMv8CuOpWcuZwDnqHeeJlcD8egBfZjy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "21670204169-5d3p7bsiiiotiafid9f4g8gtb8oafm07.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
