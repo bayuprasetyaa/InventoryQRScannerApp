@@ -26,7 +26,7 @@ class HomeActivity : BaseActivity() {
         }
 
         binding.fabList.setOnClickListener {
-            startActivity(Intent(this, ProductActivity::class.java))}
+            startActivity(Intent(this, ListActivity::class.java))}
 
     }
 

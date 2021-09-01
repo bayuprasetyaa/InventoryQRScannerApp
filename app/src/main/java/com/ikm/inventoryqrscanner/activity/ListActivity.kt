@@ -5,9 +5,9 @@ import android.os.Bundle
 import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.R
 
-class ProductActivity : BaseActivity() {
+class ListActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_product)
+        setContentView(R.layout.activity_list)
     }
 }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InventoryQRScanner">
         <activity
+            android:name=".activity.ListActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProductActivity"
             android:exported="true" />
         <activity

@@ -36,7 +36,7 @@
             android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_apply"
+            android:id="@+id/btn_Apply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:backgroundTint="@color/white"

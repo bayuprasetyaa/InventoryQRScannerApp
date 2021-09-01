@@ -7,8 +7,6 @@
     <string name="welcome">Selamat Datang !</string>
     <string name="hint">Search</string>
     <string name="scan">Scan</string>
-    <string name="showall">Tampilkan Semua</string>
-    <string name="item"> Barang </string>
 
     <string name="detail">Detail Produk</string>
     <string name="number">ID Produk</string>
@@ -22,5 +20,7 @@
     <string name="save">SIMPAN</string>
 
     <string name="choose_date">Pilih Tanggal</string>
+    <string name="title_activity_all_product">AllProductActivity</string>
+    <!-- Strings used for fragments for navigation -->
 
 </resources>
