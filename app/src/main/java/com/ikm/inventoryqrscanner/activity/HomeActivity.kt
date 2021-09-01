@@ -20,9 +20,14 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun setupListener(){
+
         binding.fabAdd.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
         }
+
+        binding.fabList.setOnClickListener {
+            startActivity(Intent(this, ProductActivity::class.java))}
+
     }
 
 }

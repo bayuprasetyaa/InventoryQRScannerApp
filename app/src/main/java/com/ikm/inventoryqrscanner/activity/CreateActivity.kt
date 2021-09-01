@@ -1,7 +1,6 @@
 package com.ikm.inventoryqrscanner.activity
 
 import android.os.Bundle
-import android.util.Log
 import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.fragment.DateFragment
