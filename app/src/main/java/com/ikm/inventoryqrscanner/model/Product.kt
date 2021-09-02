@@ -4,13 +4,12 @@ import java.io.Serializable
 import java.util.*
 
 data class Product(
-    var id: String?,
-    var number: Int,
-    var product: String,
+    var number: String?,
+    var product: String?,
     var expDate: Timestamp?,
-    var amount: Int,
-    var type: String,
-    var location: String,
-    var condition: String,
-    var description: String,
+    var amount: Int?,
+    var type: String?,
+    var location: String?,
+    var condition: String?,
+    var description: String?,
 ) : Serializable

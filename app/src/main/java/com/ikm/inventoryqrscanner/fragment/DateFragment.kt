@@ -33,6 +33,7 @@ class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
             date = "$day/${month + 1}/$year"
         }
 
+
         binding.btnApply.setOnClickListener {
             listener.onSuccess(date)
             this.dismiss()

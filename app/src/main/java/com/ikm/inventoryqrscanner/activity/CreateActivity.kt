@@ -45,8 +45,7 @@ class CreateActivity : BaseActivity() {
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
             val product = Product(
-                null,
-                number = binding.editId.text.toString().toInt(),
+                number = binding.editId.text.toString(),
                 product = binding.editProduct.text.toString(),
                 expDate = Timestamp(dateFormat.parse(date)),
                 amount = binding.editAmount.text.toString().toInt(),
@@ -57,9 +56,10 @@ class CreateActivity : BaseActivity() {
             )
 
             db.collection("item_description")
-                .add(product)
+                .document(product.number!!)
+                .set(product)
                 .addOnSuccessListener { documentReference ->
-                    Log.e(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                    Log.e(TAG, "DocumentSnapshot added with ID: ${product.number}")
                     Toast.makeText(applicationContext, "Produk Berhasil Ditambahkan !", Toast.LENGTH_SHORT).show()
                     finish()
                 }

@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/label_id"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="000"
-            android:inputType="number"
+            android:inputType="text"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:textSize="16sp"/>
@@ -124,7 +124,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/poppins_medium"
             android:textSize="16sp"
-            android:clickable="false"
+            android:clickable="true"
             android:focusable="false"
             android:focusableInTouchMode="false"/>
 

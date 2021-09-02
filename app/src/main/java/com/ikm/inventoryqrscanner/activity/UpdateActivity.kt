@@ -1,6 +1,7 @@
 package com.ikm.inventoryqrscanner.activity
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -19,7 +20,7 @@ import java.util.*
 class UpdateActivity : BaseActivity() {
 
     private val db by lazy { Firebase.firestore }
-    val id by lazy { intent.getStringExtra("id") }
+    val number by lazy { intent.getStringExtra("number") }
     private val binding by lazy { ActivityCreateBinding.inflate(layoutInflater) }
     private lateinit var items : Product
 
@@ -49,7 +50,7 @@ class UpdateActivity : BaseActivity() {
             val date = binding.editDate.text.toString()
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
-            items.number = binding.editId.text.toString().toInt()
+            items.number = binding.editId.text.toString()
             items.product = binding.editProduct.text.toString()
             items.expDate = Timestamp(dateFormat.parse(date))
             items.amount = binding.editAmount.text.toString().toInt()
@@ -58,7 +59,7 @@ class UpdateActivity : BaseActivity() {
             items.condition = binding.editCondition.text.toString()
             items.description = binding.editDesc.text.toString()
 
-            db.collection("item_description").document(id!!)
+            db.collection("item_description").document(number!!)
                 .set(items)
                 .addOnSuccessListener {
                     Log.d(TAG, "DocumentSnapshot successfully written!")
@@ -74,7 +75,7 @@ class UpdateActivity : BaseActivity() {
                 setMessage("Hapus ${items.product} dari list ?")
                 setNegativeButton("Batal"){dialog,_ -> dialog.dismiss()}
                 setPositiveButton("Hapus"){dialog,_ ->
-                    deleteItem(items.id!!)
+                    deleteItem(items.number!!)
                     dialog.dismiss()}
             }.show()
         }
@@ -84,13 +85,12 @@ class UpdateActivity : BaseActivity() {
 
     private fun detailProduct() {
         db.collection("item_description")
-            .document(id!!)
+            .document(number!!)
             .get()
             .addOnSuccessListener { document ->
 
                 items = Product(
-                    id = document.reference.id,
-                    number = document["number"].toString().toInt(),
+                    number = document["number"].toString(),
                     product = document["product"].toString(),
                     expDate = document["expDate"] as Timestamp,
                     amount = document["amount"].toString().toInt(),
@@ -114,11 +114,12 @@ class UpdateActivity : BaseActivity() {
     }
 
     private fun deleteItem(id: String){
-        db.collection("item_description").document(id)
+        db.collection("item_description").document(number!!)
             .delete()
             .addOnSuccessListener {
                 Toast.makeText(applicationContext, "${items.product} Dihapus!!", Toast.LENGTH_SHORT).show()
                 finish()
+                startActivity(Intent(this, HomeActivity::class.java))
             }
             .addOnFailureListener {  }
     }

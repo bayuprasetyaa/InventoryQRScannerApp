@@ -1,8 +1,11 @@
 package com.ikm.inventoryqrscanner.activity
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
@@ -29,9 +32,10 @@ class ListActivity : BaseActivity() {
     private fun setupList() {
         adapter = ItemAdapter(arrayListOf(), object : ItemAdapter.AdapterListener{
             override fun onClick(items: Product) {
+                Log.e(TAG, "Send ${items.number}")
                 startActivity(
-                    Intent(this@ListActivity, UpdateActivity::class.java)
-                        .putExtra("id", items.id)
+                    Intent(this@ListActivity, ProductActivity::class.java)
+                        .putExtra("number", items.number)
                 )
             }
 
@@ -61,8 +65,7 @@ class ListActivity : BaseActivity() {
         for (document in result){
             items.add(
                 Product(
-                    id = document.reference.id,
-                    number = document.data["number"].toString().toInt(),
+                    number = document.data["number"].toString(),
                     product = document.data["product"].toString(),
                     expDate = document.data["expDate"] as Timestamp,
                     amount = document.data["amount"].toString().toInt(),

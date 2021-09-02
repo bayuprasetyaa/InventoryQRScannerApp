@@ -37,8 +37,8 @@ class HomeActivity : BaseActivity() {
         adapter = ItemAdapter(arrayListOf(), object : ItemAdapter.AdapterListener{
             override fun onClick(items: Product) {
                 startActivity(
-                    Intent(this@HomeActivity, UpdateActivity::class.java)
-                        .putExtra("id", items.id)
+                    Intent(this@HomeActivity, ProductActivity::class.java)
+                        .putExtra("number", items.number)
                 )
             }
 
@@ -57,7 +57,12 @@ class HomeActivity : BaseActivity() {
         }
 
         binding.fabList.setOnClickListener {
-            startActivity(Intent(this, ListActivity::class.java))}
+            startActivity(Intent(this, ListActivity::class.java))
+        }
+
+        binding.scan.setOnClickListener {
+            startActivity(Intent(this, ScanActivity::class.java))
+        }
 
     }
 
@@ -74,8 +79,7 @@ class HomeActivity : BaseActivity() {
         for (document in result){
             items.add(
                 Product(
-                    id = document.reference.id,
-                    number = document.data["number"].toString().toInt(),
+                    number = document.data["number"].toString(),
                     product = document.data["product"].toString(),
                     expDate = document.data["expDate"] as Timestamp,
                     amount = document.data["amount"].toString().toInt(),
