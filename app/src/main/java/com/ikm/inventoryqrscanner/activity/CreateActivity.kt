@@ -48,7 +48,7 @@ class CreateActivity : BaseActivity() {
                 number = binding.editId.text.toString(),
                 product = binding.editProduct.text.toString(),
                 expDate = Timestamp(dateFormat.parse(date)),
-                amount = binding.editAmount.text.toString().toInt(),
+                amount = binding.editAmount.text.toString(),
                 type = binding.editType.text.toString(),
                 location = binding.editLocation.text.toString(),
                 condition = binding.editCondition.text.toString(),

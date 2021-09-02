@@ -80,8 +80,10 @@ class ScanActivity : BaseActivity() {
 
             decodeCallback = DecodeCallback{
                 runOnUiThread {
-                    binding.tvText.text = it.text
                     number = it.text.toString()
+                    startActivity(
+                        Intent(this@ScanActivity, ProductActivity::class.java)
+                            .putExtra("number", number))
                 }
             }
 
@@ -92,11 +94,7 @@ class ScanActivity : BaseActivity() {
             }
 
             binding.scan.setOnClickListener {
-
-                startActivity(
-                    Intent(this@ScanActivity, UpdateActivity::class.java)
-                        .putExtra("number", number)
-                )
+                codeScanner.startPreview()
             }
         }
     }

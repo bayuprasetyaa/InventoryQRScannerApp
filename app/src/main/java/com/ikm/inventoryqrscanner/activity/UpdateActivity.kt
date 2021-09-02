@@ -53,7 +53,7 @@ class UpdateActivity : BaseActivity() {
             items.number = binding.editId.text.toString()
             items.product = binding.editProduct.text.toString()
             items.expDate = Timestamp(dateFormat.parse(date))
-            items.amount = binding.editAmount.text.toString().toInt()
+            items.amount = binding.editAmount.text.toString()
             items.type = binding.editType.text.toString()
             items.location = binding.editLocation.text.toString()
             items.condition = binding.editCondition.text.toString()
@@ -93,7 +93,7 @@ class UpdateActivity : BaseActivity() {
                     number = document["number"].toString(),
                     product = document["product"].toString(),
                     expDate = document["expDate"] as Timestamp,
-                    amount = document["amount"].toString().toInt(),
+                    amount = document["amount"].toString(),
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),

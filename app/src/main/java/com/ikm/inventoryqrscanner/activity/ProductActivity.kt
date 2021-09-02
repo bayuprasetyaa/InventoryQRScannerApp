@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -37,7 +38,12 @@ class ProductActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        detailProduct()
+        if (number != null ){
+            detailProduct()
+        }else{
+            binding.container.isVisible = false
+            binding.dataNull.isVisible = true
+        }
     }
 
     private fun setupView(){
@@ -65,7 +71,7 @@ class ProductActivity : BaseActivity() {
                     number = document["number"].toString(),
                     product = document["product"].toString(),
                     expDate = document["expDate"] as? Timestamp,
-                    amount = document["amount"].toString().toInt(),
+                    amount = document["amount"].toString(),
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),
