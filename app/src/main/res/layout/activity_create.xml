@@ -45,9 +45,10 @@
             app:layout_constraintTop_toBottomOf="@+id/label_id"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="000"
-            android:inputType="text"
+            android:maxLength="4"
+            android:inputType="number"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -71,7 +72,7 @@
             android:hint="Produk"
             android:inputType="text"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -90,13 +91,14 @@
             android:id="@+id/edit_amount"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:maxLength="4"
             app:layout_constraintTop_toBottomOf="@+id/label_amount"
             app:layout_constraintEnd_toEndOf="parent"
             android:hint="0"
             android:textAlignment="textEnd"
             android:inputType="number"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -111,22 +113,34 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_product"
             android:layout_marginTop="25dp"/>
 
-        <EditText
-            android:id="@+id/edit_date"
+        <LinearLayout
+            android:id="@+id/date"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_date"
             app:layout_constraintStart_toStartOf="parent"
-            android:hint="dd/mm/yyyy"
-            android:drawableStart="@drawable/ic_date"
-            android:textAlignment="textEnd"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
-            android:textSize="16sp"
-            android:clickable="true"
-            android:focusable="false"
-            android:focusableInTouchMode="false"/>
+            android:padding="0dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/calender"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/ic_date"/>
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/edit_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:mask="##/##/####"
+                android:inputType="number"
+                android:hint="dd/mm/yyyy"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"/>
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/label_type"
@@ -137,7 +151,7 @@
             android:textColor="@color/teal_700"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_date"
+            app:layout_constraintTop_toBottomOf="@+id/date"
             android:layout_marginTop="25dp"/>
 
         <EditText
@@ -149,7 +163,7 @@
             android:hint="Jenis"
             android:inputType="text"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -173,7 +187,7 @@
             android:hint="Lokasi"
             android:inputType="text"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -197,7 +211,7 @@
             android:hint="Kondisi"
             android:inputType="text"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <TextView
@@ -215,6 +229,7 @@
         <EditText
             android:id="@+id/edit_desc"
             android:background="@drawable/textbox_bg"
+            android:padding="5dp"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_desc"
@@ -224,7 +239,7 @@
             android:lines="4"
             android:maxLines="4"
             android:textColor="@color/black"
-            android:fontFamily="@font/poppins_medium"
+            android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
 
         <com.google.android.material.button.MaterialButton

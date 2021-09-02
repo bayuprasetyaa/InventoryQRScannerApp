@@ -7,7 +7,7 @@ data class Product(
     var number: String? = "",
     var product: String? = "",
     var expDate: Timestamp? = null,
-    var amount: String? = "",
+    var amount: Int = 0,
     var type: String? = "",
     var location: String? = "",
     var condition: String? = "",

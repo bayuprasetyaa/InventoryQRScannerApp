@@ -71,7 +71,7 @@ class ProductActivity : BaseActivity() {
                     number = document["number"].toString(),
                     product = document["product"].toString(),
                     expDate = document["expDate"] as? Timestamp,
-                    amount = document["amount"].toString(),
+                    amount = document["amount"].toString().toInt(),
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),

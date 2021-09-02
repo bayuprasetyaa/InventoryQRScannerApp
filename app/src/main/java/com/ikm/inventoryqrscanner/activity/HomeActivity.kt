@@ -82,7 +82,7 @@ class HomeActivity : BaseActivity() {
                     number = document.data["number"].toString(),
                     product = document.data["product"].toString(),
                     expDate = document.data["expDate"] as Timestamp,
-                    amount = document.data["amount"].toString(),
+                    amount = document.data["amount"].toString().toInt(),
                     type = document.data["type"].toString(),
                     location = document.data["location"].toString(),
                     condition = document.data["condition"].toString(),
