@@ -19,6 +19,9 @@
             android:name=".activity.CreateActivity"
             android:exported="true" />
         <activity
+            android:name=".activity.UpdateActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.HomeActivity"
             android:exported="true">
             <intent-filter>

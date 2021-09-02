@@ -14,13 +14,14 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="30dp"
         android:background="@drawable/list_bg"
-        android:paddingVertical="50dp"
-        android:paddingHorizontal="20dp">
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="10dp">
 
         <androidx.recyclerview.widget.RecyclerView
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/list_item"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:listitem="@layout/adapter_item"
             tools:itemCount="5"/>
 

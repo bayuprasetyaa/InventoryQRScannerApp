@@ -29,7 +29,6 @@ class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
     }
 
     private fun setupListener() {
-        binding.calender.date = Date().time
         binding.calender.setOnDateChangeListener { _, year, month, day ->
             date = "$day/${month + 1}/$year"
         }

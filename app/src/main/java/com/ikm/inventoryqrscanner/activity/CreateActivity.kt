@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -23,6 +24,7 @@ class CreateActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.btnDelete.isVisible = false
         setupListener()
     }
 

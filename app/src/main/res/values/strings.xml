@@ -7,6 +7,7 @@
     <string name="welcome">Selamat Datang !</string>
     <string name="hint">Search</string>
     <string name="scan">Scan</string>
+    <string name="show">Tampilkan lebih banyak</string>
 
     <string name="detail">Detail Produk</string>
     <string name="number">ID Produk</string>
@@ -19,6 +20,7 @@
     <string name="show_location">Tempat \nPenyimpanan</string>
     <string name="desc">Deskripsi</string>
     <string name="save">SIMPAN</string>
+    <string name="delete">HAPUS</string>
 
     <string name="choose_date">Pilih Tanggal</string>
     <string name="title_activity_all_product">AllProductActivity</string>

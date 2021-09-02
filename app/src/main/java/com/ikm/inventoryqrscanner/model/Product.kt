@@ -4,10 +4,10 @@ import java.io.Serializable
 import java.util.*
 
 data class Product(
-    var id: Int?,
+    var id: String?,
     var number: Int,
     var product: String,
-    var expDate: Timestamp,
+    var expDate: Timestamp?,
     var amount: Int,
     var type: String,
     var location: String,
