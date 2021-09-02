@@ -1,10 +1,10 @@
 package com.ikm.inventoryqrscanner.activity
 
-import androidx.appcompat.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
@@ -68,20 +68,18 @@ class UpdateActivity : BaseActivity() {
                 .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
         }
 
-        binding.btnDelete.setOnClickListener{
-            val alertDialog = AlertDialog.Builder(this@UpdateActivity)
-            alertDialog.apply {
+        binding.btnDelete.setOnClickListener {
+            AlertDialog.Builder(this@UpdateActivity).apply {
                 setTitle("Hapus")
-                setMessage("Hapus ${items.product} dari list?")
-                setNegativeButton("Batal") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                setPositiveButton("Hapus") { dialog, _->
+                setMessage("Hapus ${items.product} dari list ?")
+                setNegativeButton("Batal"){dialog,_ -> dialog.dismiss()}
+                setPositiveButton("Hapus"){dialog,_ ->
                     deleteItem(items.id!!)
-                    dialog.dismiss()
-                }
-            }
+                    dialog.dismiss()}
+            }.show()
         }
+
+
     }
 
     private fun detailProduct() {
@@ -116,9 +114,12 @@ class UpdateActivity : BaseActivity() {
     }
 
     private fun deleteItem(id: String){
-        db.collection("Item_description").document(id!!)
+        db.collection("item_description").document(id)
             .delete()
-            .addOnSuccessListener { onBackPressed() }
+            .addOnSuccessListener {
+                Toast.makeText(applicationContext, "${items.product} Dihapus!!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
             .addOnFailureListener {  }
     }
 

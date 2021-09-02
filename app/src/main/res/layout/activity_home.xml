@@ -101,6 +101,7 @@
         app:layout_constraintTop_toBottomOf="@id/search_bar"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/list_item"
         android:background="@drawable/list_bg"
         android:layout_width="match_parent"
