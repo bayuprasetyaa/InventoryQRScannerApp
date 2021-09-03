@@ -66,9 +66,9 @@ class CreateActivity : BaseActivity() {
             product = binding.editProduct.text.toString(),
             expDate = Timestamp(dateFormat.parse(date)),
             amount = binding.editAmount.text.toString().toInt(),
-            type = binding.editType.text.toString(),
+            type = binding.editType.selectedItem.toString(),
             location = binding.editLocation.text.toString(),
-            condition = binding.editCondition.text.toString(),
+            condition = binding.editCondition.selectedItem.toString(),
             description = binding.editDesc.text.toString())
 
         // Buat data

@@ -67,6 +67,7 @@
             android:id="@+id/edit_product"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:maxLength="15"
             app:layout_constraintTop_toBottomOf="@+id/label_product"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="Produk"
@@ -154,13 +155,14 @@
             app:layout_constraintTop_toBottomOf="@+id/date"
             android:layout_marginTop="25dp"/>
 
-        <EditText
+        <Spinner
             android:id="@+id/edit_type"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_type"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="Jenis"
+            android:entries="@array/type"
             android:inputType="text"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins"
@@ -202,13 +204,14 @@
             app:layout_constraintTop_toBottomOf="@+id/edit_location"
             android:layout_marginTop="25dp"/>
 
-        <EditText
+        <Spinner
             android:id="@+id/edit_condition"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_condition"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="Kondisi"
+            android:entries="@array/condition"
             android:inputType="text"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins"

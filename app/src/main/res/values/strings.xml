@@ -2,6 +2,16 @@
     <string name="app_name">Inventory QR Scanner</string>
     <string name="imagedesc">Image Description</string>
 
+    <string-array name="condition">
+        <item>Baik</item>
+        <item>Cukup</item>
+        <item>Rusak</item>
+    </string-array>
+
+    <string-array name="type">
+        <item>Berbahaya</item>
+        <item>Tidak Berbahaya</item>
+    </string-array>
 
     <string name="user">Pengguna</string>
     <string name="welcome">Selamat Datang !</string>

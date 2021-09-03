@@ -13,6 +13,8 @@ import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.model.Product
+import com.ikm.inventoryqrscanner.util.spinnerCondition
+import com.ikm.inventoryqrscanner.util.spinnerType
 import com.ikm.inventoryqrscanner.util.timestampToString
 import java.text.SimpleDateFormat
 import java.util.*
@@ -54,9 +56,9 @@ class UpdateActivity : BaseActivity() {
             items.product = binding.editProduct.text.toString()
             items.expDate = Timestamp(dateFormat.parse(date))
             items.amount = binding.editAmount.text.toString().toInt()
-            items.type = binding.editType.text.toString()
+            items.type = binding.editType.selectedItem.toString()
             items.location = binding.editLocation.text.toString()
-            items.condition = binding.editCondition.text.toString()
+            items.condition = binding.editCondition.selectedItem.toString()
             items.description = binding.editDesc.text.toString()
 
             db.collection("item_description").document(number!!)
@@ -104,9 +106,9 @@ class UpdateActivity : BaseActivity() {
                 binding.editProduct.setText(items.product)
                 binding.editDate.setText(timestampToString(items.expDate))
                 binding.editAmount.setText(items.amount.toString())
-                binding.editType.setText(items.type)
+                binding.editType.setSelection(spinnerType(items.type.toString()), true)
                 binding.editLocation.setText(items.location)
-                binding.editCondition.setText(items.condition)
+                binding.editCondition.setSelection(spinnerCondition(items.type.toString()), true)
                 binding.editDesc.setText(items.description)
             }
             .addOnFailureListener { exception ->
@@ -118,8 +120,8 @@ class UpdateActivity : BaseActivity() {
             .delete()
             .addOnSuccessListener {
                 Toast.makeText(applicationContext, "${items.product} Dihapus!!", Toast.LENGTH_SHORT).show()
-                finish()
                 startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }
             .addOnFailureListener {  }
     }

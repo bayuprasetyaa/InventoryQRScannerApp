@@ -84,6 +84,7 @@ class ScanActivity : BaseActivity() {
                     startActivity(
                         Intent(this@ScanActivity, ProductActivity::class.java)
                             .putExtra("number", number))
+                    finish()
                 }
             }
 
