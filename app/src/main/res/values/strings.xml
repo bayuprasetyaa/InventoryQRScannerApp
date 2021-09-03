@@ -17,6 +17,8 @@
 
     <string name="submit">Masuk</string>
     <string name="title">Inventaris \nLAB IKM</string>
+    <string name="mahasiswa">Mahasiswa</string>
+    <string name="dosen">Dosen</string>
 
     <string name="user">Pengguna</string>
     <string name="welcome">Selamat Datang !</string>
