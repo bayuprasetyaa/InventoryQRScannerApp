@@ -3,12 +3,14 @@
     <string name="imagedesc">Image Description</string>
 
     <string-array name="condition">
+        <item></item>
         <item>Baik</item>
         <item>Cukup</item>
         <item>Rusak</item>
     </string-array>
 
     <string-array name="type">
+        <item></item>
         <item>Berbahaya</item>
         <item>Tidak Berbahaya</item>
     </string-array>

@@ -26,3 +26,19 @@ fun amountFormat(number: Int): String{
     return decimalFormat.format(number)
 }
 
+fun stringToTimestamp(date: String?): Timestamp?{
+
+    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+
+    return if (!date.isNullOrEmpty()) {
+        Timestamp(dateFormat.parse(date))
+    } else null
+}
+
+fun intChecker(string: String?):Int?{
+    return if (string != ""){
+        string?.toInt()
+    }else null
+}
+
+

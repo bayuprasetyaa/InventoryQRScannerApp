@@ -12,7 +12,9 @@ import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.fragment.DateFragment
 import com.ikm.inventoryqrscanner.model.Product
+import com.ikm.inventoryqrscanner.util.intChecker
 import com.ikm.inventoryqrscanner.util.stringToDate
+import com.ikm.inventoryqrscanner.util.stringToTimestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,15 +59,14 @@ class CreateActivity : BaseActivity() {
     // Fungsi kirim data
     private fun sendData() {
 
-        val date = binding.editDate.text.toString()
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
         // Ambil Data dari Edit Text
+
         val product = Product(
             number = binding.editId.text.toString(),
             product = binding.editProduct.text.toString(),
-            expDate = Timestamp(dateFormat.parse(date)),
-            amount = binding.editAmount.text.toString().toInt(),
+            expDate = stringToTimestamp(binding.editDate.text.toString()),
+            amount = binding.editAmount.text.toString(),
             type = binding.editType.selectedItem.toString(),
             location = binding.editLocation.text.toString(),
             condition = binding.editCondition.selectedItem.toString(),

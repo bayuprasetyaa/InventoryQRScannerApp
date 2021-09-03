@@ -1,6 +1,7 @@
 package com.ikm.inventoryqrscanner.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,7 +31,11 @@ class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
 
     private fun setupListener() {
         binding.calender.setOnDateChangeListener { _, year, month, day ->
-            date = "$day/${month + 1}/$year"
+            val month1 = month + 1
+            val days = day.toString().padStart(2, '0')
+            val months = month1.toString().padStart(2, '0')
+            date = "$days$months$year"
+            Log.e("DateFragment", date)
         }
 
 

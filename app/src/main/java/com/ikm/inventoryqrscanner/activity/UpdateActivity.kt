@@ -14,6 +14,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
+import com.ikm.inventoryqrscanner.fragment.DateFragment
 import com.ikm.inventoryqrscanner.model.Product
 import com.ikm.inventoryqrscanner.util.spinnerCondition
 import com.ikm.inventoryqrscanner.util.spinnerType
@@ -58,7 +59,7 @@ class UpdateActivity : BaseActivity() {
             items.number = binding.editId.text.toString()
             items.product = binding.editProduct.text.toString()
             items.expDate = Timestamp(dateFormat.parse(date))
-            items.amount = binding.editAmount.text.toString().toInt()
+            items.amount = binding.editAmount.text.toString()
             items.type = binding.editType.selectedItem.toString()
             items.location = binding.editLocation.text.toString()
             items.condition = binding.editCondition.selectedItem.toString()
@@ -87,6 +88,14 @@ class UpdateActivity : BaseActivity() {
                     dialog.dismiss()}
             }.show()
         }
+        binding.calender.setOnClickListener {
+            DateFragment(object : DateFragment.DateListener {
+                override fun onSuccess(date: String) {
+                    binding.editDate.setText(date)
+                }
+
+            }).apply { show(supportFragmentManager, "dateFragment")}
+        }
 
 
     }
@@ -100,8 +109,8 @@ class UpdateActivity : BaseActivity() {
                 items = Product(
                     number = document["number"].toString(),
                     product = document["product"].toString(),
-                    expDate = document["expDate"] as Timestamp,
-                    amount = document["amount"].toString().toInt(),
+                    expDate = document["expDate"] as? Timestamp,
+                    amount = document["amount"].toString(),
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),

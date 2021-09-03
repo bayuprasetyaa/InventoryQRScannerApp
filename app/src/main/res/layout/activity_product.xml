@@ -16,9 +16,10 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="25dp"
+            android:paddingTop="5dp"
             android:layout_marginTop="25dp"
             android:layout_marginBottom="25dp">
 
@@ -41,7 +42,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/number"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product"
                 android:layout_marginTop="25dp"/>
@@ -55,7 +56,7 @@
                 tools:text="000"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/label_amount"
@@ -64,7 +65,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/amount"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/product"
                 android:layout_marginTop="25dp"/>
@@ -79,7 +80,7 @@
                 android:textAlignment="textEnd"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/label_type"
@@ -88,7 +89,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/type"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/amount"
                 android:layout_marginTop="25dp"/>
@@ -103,7 +104,7 @@
                 android:textAlignment="textEnd"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/label_location"
@@ -112,7 +113,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/show_location"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/id"
                 android:layout_marginTop="25dp"/>
@@ -126,7 +127,7 @@
                 tools:text="Rak 45"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
             <TextView
                 android:id="@+id/label_date"
@@ -135,7 +136,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/date"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/location"
                 android:layout_marginTop="25dp"/>
@@ -148,7 +149,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 tools:text="08/05/2025"/>
 
             <TextView
@@ -158,7 +159,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/condition"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/date"
                 android:layout_marginTop="25dp"/>
@@ -171,7 +172,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 tools:text="Baik"/>
 
             <TextView
@@ -181,14 +182,13 @@
                 android:fontFamily="@font/poppins"
                 android:text="@string/desc"
                 android:textColor="@color/teal_700"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/condition"
                 android:layout_marginTop="25dp"/>
 
             <TextView
                 android:id="@+id/desc"
-                android:background="@drawable/textbox_bg"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -199,7 +199,7 @@
                 android:maxLines="4"
                 android:textColor="@color/black"
                 android:fontFamily="@font/poppins"
-                android:textSize="16sp"/>
+                android:textSize="12sp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
