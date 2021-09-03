@@ -102,7 +102,7 @@ class ProductActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, ListActivity::class.java))
         super.onBackPressed()
     }
 }

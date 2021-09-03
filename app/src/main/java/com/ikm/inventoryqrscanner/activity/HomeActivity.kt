@@ -19,6 +19,8 @@ class HomeActivity : BaseActivity() {
 //    private val dataMessage by lazy { intent.getStringExtra("dataMessage") }
     private val db by lazy { Firebase.firestore }
     private lateinit var adapter : ItemAdapter
+    private var backPressedTime:Long = 0
+    lateinit var backToast:Toast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -106,9 +108,15 @@ class HomeActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        this.finishAffinity();
-        System.exit(0);
-        super.onBackPressed()
+        backToast = Toast.makeText(this, "Press back again to leave the app.", Toast.LENGTH_LONG)
+        if (backPressedTime + 2000 > System.currentTimeMillis()){
+            this.finishAffinity();
+            System.exit(0);
+            super.onBackPressed()
+        }else{
+            backToast.show()
+        }
+        backPressedTime = System.currentTimeMillis()
     }
 
 

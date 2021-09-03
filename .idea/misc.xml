@@ -5,14 +5,17 @@
       <map>
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/button_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/create_bg.xml" value="0.240625" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/field_bg.xml" value="0.23333333333333334" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/ic_search.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/list_bg.xml" value="0.240625" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/login_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/produk_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/search_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/drawable/textbox_bg.xml" value="0.240625" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_create.xml" value="0.22447916666666667" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_list.xml" value="0.21041666666666667" />
+        <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_product.xml" value="0.22447916666666667" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/activity_scan.xml" value="0.21041666666666667" />
         <entry key="..\:/InventoryQRScanner/app/src/main/res/layout/adapter_item.xml" value="0.22447916666666667" />

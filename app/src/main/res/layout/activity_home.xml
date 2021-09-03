@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_700"
-    tools:context=".activity.HomeActivity">
+    tools:context=".activity.HomeActivity"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
 
     <LinearLayout
         android:id="@+id/userInfo"
@@ -63,19 +65,18 @@
 
         <EditText
             android:layout_gravity="center"
-            android:layout_width="180dp"
+            android:layout_width="200dp"
             android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:textColor="@color/teal_700"
             android:hint="@string/hint"
-            android:inputType="text"
-            android:focusedByDefault="false"/>
+            android:inputType="text"/>
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/ic_search"/>
@@ -84,19 +85,19 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/scan"
-        android:layout_width="135dp"
-        android:layout_height="50dp"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
         android:gravity="center"
         android:paddingHorizontal="20dp"
         android:paddingVertical="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/scan"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:drawableStart="@drawable/ic_scan"
         android:fontFamily="@font/poppins"
         android:textColor="@color/teal_700"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/button_bg"
         app:layout_constraintTop_toBottomOf="@id/search_bar"/>
 

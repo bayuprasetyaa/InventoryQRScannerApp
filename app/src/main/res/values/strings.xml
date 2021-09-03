@@ -15,6 +15,9 @@
         <item>Tidak Berbahaya</item>
     </string-array>
 
+    <string name="submit">Masuk</string>
+    <string name="title">Inventaris \nLAB IKM</string>
+
     <string name="user">Pengguna</string>
     <string name="welcome">Selamat Datang !</string>
     <string name="hint">Search</string>

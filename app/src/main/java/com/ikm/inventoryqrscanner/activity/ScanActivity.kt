@@ -110,4 +110,9 @@ class ScanActivity : BaseActivity() {
         super.onPause()
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this, HomeActivity::class.java))
+        super.onBackPressed()
+    }
+
 }
