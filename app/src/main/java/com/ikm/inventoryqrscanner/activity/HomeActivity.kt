@@ -2,6 +2,7 @@ package com.ikm.inventoryqrscanner.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -10,10 +11,12 @@ import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.adapter.ItemAdapter
 import com.ikm.inventoryqrscanner.databinding.ActivityHomeBinding
 import com.ikm.inventoryqrscanner.model.Product
+import kotlin.system.exitProcess
 
 class HomeActivity : BaseActivity() {
 
     private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
+//    private val dataMessage by lazy { intent.getStringExtra("dataMessage") }
     private val db by lazy { Firebase.firestore }
     private lateinit var adapter : ItemAdapter
 
@@ -22,6 +25,7 @@ class HomeActivity : BaseActivity() {
         setupBinding()
         setupList()
         setupListener()
+        message()
     }
 
     override fun onStart() {
@@ -62,6 +66,7 @@ class HomeActivity : BaseActivity() {
 
         binding.scan.setOnClickListener {
             startActivity(Intent(this, ScanActivity::class.java))
+            finish()
         }
 
     }
@@ -93,4 +98,18 @@ class HomeActivity : BaseActivity() {
         this.adapter.setData(items)
 
     }
+
+    private fun message(){
+        if (intent.hasExtra("dataMessage")){
+            Toast.makeText(this, "Data Tidak Ditemukan", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onBackPressed() {
+        this.finishAffinity();
+        System.exit(0);
+        super.onBackPressed()
+    }
+
+
 }

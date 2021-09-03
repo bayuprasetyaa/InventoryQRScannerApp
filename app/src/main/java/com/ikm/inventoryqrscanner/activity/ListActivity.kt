@@ -79,4 +79,8 @@ class ListActivity : BaseActivity() {
         this.adapter.setData(items)
 
     }
+    override fun onBackPressed() {
+        startActivity(Intent(this, HomeActivity::class.java))
+        super.onBackPressed()
+    }
 }

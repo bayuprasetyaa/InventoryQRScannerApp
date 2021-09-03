@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
@@ -31,7 +33,7 @@ class UpdateActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupView()
-        setupListener()
+        setupListener() // fungsi button
     }
 
     override fun onStart() {
@@ -49,6 +51,7 @@ class UpdateActivity : BaseActivity() {
 
         binding.btnSave.setOnClickListener{
 
+            // Update data dari TextView ke database firesore
             val date = binding.editDate.text.toString()
             val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
 
@@ -72,6 +75,9 @@ class UpdateActivity : BaseActivity() {
         }
 
         binding.btnDelete.setOnClickListener {
+
+            //Delete database berdasarkan dari id Number
+
             AlertDialog.Builder(this@UpdateActivity).apply {
                 setTitle("Hapus")
                 setMessage("Hapus ${items.product} dari list ?")
@@ -86,11 +92,11 @@ class UpdateActivity : BaseActivity() {
     }
 
     private fun detailProduct() {
+
         db.collection("item_description")
             .document(number!!)
             .get()
             .addOnSuccessListener { document ->
-
                 items = Product(
                     number = document["number"].toString(),
                     product = document["product"].toString(),
@@ -99,8 +105,7 @@ class UpdateActivity : BaseActivity() {
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),
-                    description = document["description"].toString()
-                )
+                    description = document["description"].toString())
 
                 binding.editId.setText(items.number.toString())
                 binding.editProduct.setText(items.product)
@@ -110,7 +115,8 @@ class UpdateActivity : BaseActivity() {
                 binding.editLocation.setText(items.location)
                 binding.editCondition.setSelection(spinnerCondition(items.type.toString()), true)
                 binding.editDesc.setText(items.description)
-            }
+                }
+
             .addOnFailureListener { exception ->
                 Log.e(TAG, "Error getting documents.", exception) }
     }
@@ -125,5 +131,4 @@ class UpdateActivity : BaseActivity() {
             }
             .addOnFailureListener {  }
     }
-
 }
