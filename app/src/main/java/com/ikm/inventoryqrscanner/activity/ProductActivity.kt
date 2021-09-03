@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
@@ -18,6 +19,7 @@ import com.ikm.inventoryqrscanner.R
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.databinding.ActivityProductBinding
 import com.ikm.inventoryqrscanner.model.Product
+import com.ikm.inventoryqrscanner.preferences.PreferenceManager
 import com.ikm.inventoryqrscanner.util.timestampToString
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,15 +30,22 @@ class ProductActivity : BaseActivity() {
     val number by lazy { intent.getStringExtra("number") }
     private val binding by lazy { ActivityProductBinding.inflate(layoutInflater) }
     private lateinit var items : Product
+    private val preference by lazy { PreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setupView()
         setupListener() // Fungsi Button
+    }
+
+    private fun setupView() {
+        binding.btnEdit.visibility = View.GONE
     }
 
     override fun onStart() {
         super.onStart()
+        checkUser()
         detailProduct() // Fungsi untuk menampilkan detail produk
     }
 
@@ -104,5 +113,11 @@ class ProductActivity : BaseActivity() {
     override fun onBackPressed() {
         startActivity(Intent(this, ListActivity::class.java))
         super.onBackPressed()
+    }
+
+    private fun checkUser(){
+        if (preference.getBoolean("admin") == true){
+            binding.btnEdit.visibility = View.VISIBLE
+        }
     }
 }

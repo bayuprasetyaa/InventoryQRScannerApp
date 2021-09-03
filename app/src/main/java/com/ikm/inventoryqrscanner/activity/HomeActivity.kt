@@ -2,6 +2,7 @@ package com.ikm.inventoryqrscanner.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
@@ -11,6 +12,7 @@ import com.ikm.inventoryqrscanner.BaseActivity
 import com.ikm.inventoryqrscanner.adapter.ItemAdapter
 import com.ikm.inventoryqrscanner.databinding.ActivityHomeBinding
 import com.ikm.inventoryqrscanner.model.Product
+import com.ikm.inventoryqrscanner.preferences.PreferenceManager
 import kotlin.system.exitProcess
 
 class HomeActivity : BaseActivity() {
@@ -21,9 +23,12 @@ class HomeActivity : BaseActivity() {
     private lateinit var adapter : ItemAdapter
     private var backPressedTime:Long = 0
     lateinit var backToast:Toast
+    private val preference by lazy { PreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        setupView()
         setupBinding()
         setupList()
         setupListener()
@@ -33,6 +38,11 @@ class HomeActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
         listItems()
+        checkUser()
+    }
+
+    private fun setupView(){
+        binding.fabAdd.visibility = View.GONE
     }
 
     private fun setupBinding() {
@@ -119,5 +129,9 @@ class HomeActivity : BaseActivity() {
         backPressedTime = System.currentTimeMillis()
     }
 
-
+    private fun checkUser(){
+        if (preference.getBoolean("admin") == true){
+            binding.fabAdd.visibility = View.VISIBLE
+        }
+    }
 }
