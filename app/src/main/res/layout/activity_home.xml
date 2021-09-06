@@ -64,17 +64,20 @@
         android:layout_marginTop="10dp">
 
         <EditText
+            android:id="@+id/search"
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_marginStart="10dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_light"
             android:textSize="12sp"
+            android:maxLength="20"
             android:textColor="@color/teal_700"
             android:hint="@string/hint"
             android:inputType="text"/>
 
-        <androidx.appcompat.widget.AppCompatImageButton
+        <ImageView
+            android:id="@+id/search_btn"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="10dp"

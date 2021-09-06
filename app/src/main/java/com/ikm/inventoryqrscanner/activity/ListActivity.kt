@@ -21,6 +21,7 @@ class ListActivity : BaseActivity() {
 
     private val binding by lazy { ActivityListBinding.inflate(layoutInflater) }
     private val db by lazy { Firebase.firestore }
+    private val product by lazy { intent.getStringExtra("search") }
     private lateinit var adapter : ItemAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,10 @@ class ListActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        listItems()
+        if (intent.hasExtra("search")){
+            search()
+        }else
+            listItems()
     }
 
     private fun listItems() {
@@ -60,7 +64,16 @@ class ListActivity : BaseActivity() {
             .addOnSuccessListener{ result -> setProduct(result) }
     }
 
+    private fun search(){
+        Log.e(TAG, "output ${product}")
+        db.collection("item_description")
+            .whereEqualTo("product", product)
+            .get()
+            .addOnSuccessListener{ result -> setProduct(result) }
+    }
+
     private fun setProduct(result: QuerySnapshot) {
+        Log.e(TAG, "output ${result}")
         val items: ArrayList<Product> = arrayListOf()
         for (document in result){
             items.add(

@@ -1,9 +1,13 @@
 package com.ikm.inventoryqrscanner.activity
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.nfc.Tag
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -78,6 +82,14 @@ class HomeActivity : BaseActivity() {
 
         binding.scan.setOnClickListener {
             startActivity(Intent(this, ScanActivity::class.java))
+            finish()
+        }
+
+        binding.searchBtn.setOnClickListener {
+            val message = binding.search.text.toString()
+            startActivity(Intent(this, ListActivity::class.java)
+                .putExtra("search", message))
+            Log.e(TAG, "input ${message}")
             finish()
         }
 
