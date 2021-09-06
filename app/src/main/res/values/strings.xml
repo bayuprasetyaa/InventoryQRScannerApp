@@ -19,6 +19,8 @@
     <string name="title">Inventaris \nLAB IKM</string>
     <string name="mahasiswa">Mahasiswa</string>
     <string name="dosen">Dosen</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="password">Kata Sandi</string>
 
     <string name="user">Pengguna</string>
     <string name="welcome">Selamat Datang !</string>

@@ -47,7 +47,7 @@ class LoginActivity : BaseActivity() {
         if (binding.username.text.isNotEmpty() && binding.password.text.isNotEmpty()){
             checkData()
         }else{
-            Toast.makeText(this, "Kolom Username dan Password tidak boleh kosong !", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Nama Pengguna dan Kata Sandi tidak boleh kosong !", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -58,7 +58,7 @@ class LoginActivity : BaseActivity() {
             .get()
             .addOnSuccessListener { result ->
                 if (result.isEmpty){
-                    Toast.makeText(this, "User tidak ditemukan", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Pengguna tidak ditemukan", Toast.LENGTH_SHORT).show()
                 }else{
                     prefererence.put("admin", true)
                     startActivity(Intent(this, HomeActivity::class.java))
