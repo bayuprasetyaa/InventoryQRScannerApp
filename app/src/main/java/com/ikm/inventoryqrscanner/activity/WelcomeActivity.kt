@@ -1,10 +1,8 @@
 package com.ikm.inventoryqrscanner.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.ikm.inventoryqrscanner.BaseActivity
-import com.ikm.inventoryqrscanner.R
 import com.ikm.inventoryqrscanner.databinding.ActivityWelcomeBinding
 import com.ikm.inventoryqrscanner.preferences.PreferenceManager
 

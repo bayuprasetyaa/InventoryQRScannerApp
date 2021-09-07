@@ -69,7 +69,7 @@ class HomeActivity : BaseActivity() {
             startActivity(Intent(this, CreateActivity::class.java))
         }
 
-        binding.fabList.setOnClickListener {
+        binding.listButton.setOnClickListener {
             startActivity(Intent(this, ListActivity::class.java))
         }
 
@@ -78,7 +78,7 @@ class HomeActivity : BaseActivity() {
             finish()
         }
 
-        binding.searchBtn.setOnClickListener {
+        binding.searchButton.setOnClickListener {
             val message = binding.search.text.toString()
             startActivity(Intent(this, ListActivity::class.java)
                 .putExtra("search", message))

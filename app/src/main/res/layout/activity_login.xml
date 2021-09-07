@@ -23,7 +23,7 @@
         app:layout_constraintBottom_toTopOf="@id/userInfo"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/userInfo"
+        android:id="@+id/bg_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="50dp"

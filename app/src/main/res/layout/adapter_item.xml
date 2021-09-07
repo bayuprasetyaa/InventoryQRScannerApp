@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,17 +10,20 @@
     app:strokeWidth="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp">
 
         <TextView
             android:id="@+id/product"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/detail"
+            android:layout_marginEnd="5dp"
             tools:text="Barang"
             android:textSize="16sp"
             android:fontFamily="@font/poppins"
@@ -29,7 +31,8 @@
             android:textColor="@color/teal_700"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/detail"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toStartOf="@id/code"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,27 +42,30 @@
 
             <TextView
                 android:id="@+id/number"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="012"
                 android:fontFamily="@font/poppins"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:textAlignment="textStart"/>
 
             <TextView
                 android:id="@+id/location"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:text="Rak 45"
                 android:fontFamily="@font/poppins"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:textAlignment="textStart"/>
 
             <TextView
                 android:id="@+id/date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="24-12-2025"
+                tools:text="24-12-2005"
                 android:fontFamily="@font/poppins"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:textAlignment="textStart"/>
         </LinearLayout>
 
         <ImageView

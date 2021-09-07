@@ -80,7 +80,7 @@
             android:inputType="text"/>
 
         <ImageView
-            android:id="@+id/search_btn"
+            android:id="@+id/search_button"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="5dp"
@@ -97,7 +97,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_bg"
 
-        android:paddingHorizontal="20dp"
+        android:paddingHorizontal="10dp"
         android:paddingVertical="0dp"
 
         android:fontFamily="@font/poppins"
@@ -123,8 +123,8 @@
         app:layout_constraintBottom_toTopOf="@id/footer">
 
         <androidx.recyclerview.widget.RecyclerView
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/list_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:background="@drawable/list_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,7 +160,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/fab_list"
+            android:id="@+id/list_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/show"

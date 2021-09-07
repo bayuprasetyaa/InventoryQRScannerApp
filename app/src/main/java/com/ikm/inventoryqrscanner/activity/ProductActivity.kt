@@ -1,27 +1,19 @@
 package com.ikm.inventoryqrscanner.activity
 
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.core.view.isVisible
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
-import com.ikm.inventoryqrscanner.R
-import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.databinding.ActivityProductBinding
 import com.ikm.inventoryqrscanner.model.Product
 import com.ikm.inventoryqrscanner.preferences.PreferenceManager
 import com.ikm.inventoryqrscanner.util.timestampToString
-import java.text.SimpleDateFormat
 import java.util.*
 
 class ProductActivity : BaseActivity() {
@@ -61,7 +53,7 @@ class ProductActivity : BaseActivity() {
     private fun detailProduct() {
 
         // Get data from Firestore
-        Log.e(TAG, "Input ${number}")
+        Log.e(TAG, "Input $number")
 
         db.collection("item_description")
             .document(number!!)
@@ -76,7 +68,7 @@ class ProductActivity : BaseActivity() {
                 }
             }
             .addOnFailureListener { exception ->
-                Log.e(ContentValues.TAG, "Error getting documents.", exception) }
+                Log.e(TAG, "Error getting documents.", exception) }
     }
 
     private fun sendData(document: DocumentSnapshot){
@@ -116,7 +108,7 @@ class ProductActivity : BaseActivity() {
     }
 
     private fun checkUser(){
-        if (preference.getBoolean("admin") == true){
+        if (preference.getBoolean("admin")){
             binding.btnEdit.visibility = View.VISIBLE
         }
     }

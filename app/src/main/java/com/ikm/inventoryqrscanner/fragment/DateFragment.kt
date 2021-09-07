@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ikm.inventoryqrscanner.databinding.FragmentDateBinding
-import java.util.*
 
 class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
 
@@ -17,7 +16,7 @@ class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentDateBinding.inflate(inflater, container, false)
 

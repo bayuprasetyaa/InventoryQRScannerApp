@@ -1,5 +1,6 @@
 package com.ikm.inventoryqrscanner.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,13 +15,13 @@ class ItemAdapter (
 
     class ViewHolder(val binding: AdapterItemBinding): RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             AdapterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: ItemAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val items = items[position]
 
         holder.binding.product.text = items.product
@@ -35,6 +36,7 @@ class ItemAdapter (
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(data: List<Product>){
         items.clear()
         items.addAll(data)

@@ -19,6 +19,8 @@
     <!--String Message-->
     <string name="errorMessageUser">Nama Pengguna tidak boleh kosong !</string>
     <string name="errorMessagePass">Kata Sandi tidak boleh kosong !</string>
+    <string name="error">Kolom tidak boleh kosong !</string>
+    <string name="errorID">ID sudah terdaftar !</string>
 
     <!--Button Text-->
     <string name="submit">Masuk</string>
@@ -52,7 +54,6 @@
     <string name="show_location">Tempat \nPenyimpanan</string>
     <string name="desc">Deskripsi</string>
     <string name="choose_date">Pilih Tanggal</string>
-    <string name="title_activity_all_product">AllProductActivity</string>
     <!-- Strings used for fragments for navigation -->
 
 </resources>

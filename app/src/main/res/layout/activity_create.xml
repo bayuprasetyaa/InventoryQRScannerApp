@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.CreateActivity"
+    android:focusableInTouchMode="true"
     android:background="@color/teal_700">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,18 +39,46 @@
             app:layout_constraintTop_toBottomOf="@+id/detail"
             android:layout_marginTop="25dp"/>
 
-        <EditText
-            android:id="@+id/edit_id"
-            android:layout_width="50dp"
+        <LinearLayout
+            android:id="@+id/edit_frame"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_id"
             app:layout_constraintStart_toStartOf="parent"
-            android:hint="000"
-            android:maxLength="4"
-            android:inputType="number"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins"
-            android:textSize="16sp"/>
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_id"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/label_id"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="000"
+                android:maxLength="4"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/error"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:backgroundTint="@color/light_red"
+                android:src="@drawable/ic_error"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error"
+            android:textSize="12sp"
+            android:textColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/edit_frame"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/label_product"
@@ -60,21 +89,49 @@
             android:textColor="@color/teal_700"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_id"
+            app:layout_constraintTop_toBottomOf="@+id/edit_frame"
             android:layout_marginTop="25dp"/>
 
-        <EditText
-            android:id="@+id/edit_product"
-            android:layout_width="150dp"
+        <LinearLayout
+            android:id="@+id/product_frame"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:maxLength="15"
             app:layout_constraintTop_toBottomOf="@+id/label_product"
             app:layout_constraintStart_toStartOf="parent"
-            android:hint="Produk"
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppins"
-            android:textSize="16sp"/>
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_product"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:maxLength="15"
+                app:layout_constraintTop_toBottomOf="@+id/label_product"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="Produk"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:textSize="16sp"/>
+
+            <ImageView
+                android:id="@+id/error2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:backgroundTint="@color/light_red"
+                android:src="@drawable/ic_error"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/error_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error"
+            android:textSize="12sp"
+            android:textColor="@color/light_red"
+            app:layout_constraintTop_toBottomOf="@id/product_frame"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
             android:id="@+id/label_amount"
@@ -85,7 +142,7 @@
             android:textColor="@color/teal_700"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_id"
+            app:layout_constraintTop_toBottomOf="@+id/edit_frame"
             android:layout_marginTop="25dp"/>
 
         <EditText
@@ -111,7 +168,7 @@
             android:textColor="@color/teal_700"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_product"
+            app:layout_constraintTop_toBottomOf="@+id/product_frame"
             android:layout_marginTop="25dp"/>
 
         <LinearLayout
@@ -256,7 +313,7 @@
             android:text="@string/save"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_delete"
+            android:id="@+id/btn_Delete"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             app:cornerRadius="10dp"

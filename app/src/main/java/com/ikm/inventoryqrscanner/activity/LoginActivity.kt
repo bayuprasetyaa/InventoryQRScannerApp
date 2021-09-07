@@ -2,7 +2,6 @@ package com.ikm.inventoryqrscanner.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -23,7 +22,6 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
         setupListener() // Fungsi Listener
     }
-
 
     private fun setupListener() {
 
