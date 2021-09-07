@@ -38,6 +38,7 @@
     <string name="welcome">Selamat Datang !</string>
     <string name="title">Inventaris \nLAB IKM</string>
     <string name="user">Pengguna</string>
+    <string name="nothing">Tidak ada data</string>
 
     <!--Field text-->
     <string name="username">Nama Pengguna</string>

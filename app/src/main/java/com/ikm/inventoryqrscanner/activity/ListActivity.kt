@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -52,7 +53,14 @@ class ListActivity : BaseActivity() {
         db.collection("item_description")
             .orderBy("product")
             .get()
-            .addOnSuccessListener{ result -> setProduct(result) }
+            .addOnSuccessListener{ result ->
+                if (result.isEmpty){
+                    binding.noData.visibility = View.VISIBLE
+                }else{
+                    binding.noData.visibility = View.GONE
+                    setProduct(result)
+                }
+            }
     }
 
     private fun search(){
@@ -60,7 +68,14 @@ class ListActivity : BaseActivity() {
         db.collection("item_description")
             .whereEqualTo("product", product)
             .get()
-            .addOnSuccessListener{ result -> setProduct(result) }
+            .addOnSuccessListener{ result ->
+                if (result.isEmpty){
+                    binding.noData.visibility = View.VISIBLE
+                }else{
+                    binding.noData.visibility = View.GONE
+                    setProduct(result)
+                }
+            }
     }
 
     private fun setProduct(result: QuerySnapshot) {

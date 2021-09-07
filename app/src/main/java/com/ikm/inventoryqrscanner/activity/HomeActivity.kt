@@ -94,9 +94,19 @@ class HomeActivity : BaseActivity() {
     private fun listItems() {
         db.collection("item_description")
             .orderBy("product")
-            .limit(5) // Set max product to list
+            .limit(10) // Set max product to list
             .get()
-            .addOnSuccessListener{ result -> setProduct(result) }
+            .addOnSuccessListener{ result ->
+
+                if (result.isEmpty){
+                    binding.noData.visibility = View.VISIBLE
+                    binding.listButton.visibility = View.GONE
+                }else{
+                    binding.noData.visibility = View.GONE
+                    binding.listButton.visibility = View.VISIBLE
+                    setProduct(result)
+                }
+            }
     }
 
     // Put information from database to adapter

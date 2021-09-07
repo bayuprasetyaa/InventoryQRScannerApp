@@ -26,6 +26,7 @@ class UpdateActivity : BaseActivity() {
     private val db by lazy { Firebase.firestore }
     private val number by lazy { intent.getStringExtra("number") }
     private lateinit var items: Product
+    private var oldProduct: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +44,10 @@ class UpdateActivity : BaseActivity() {
     private fun setupView(){
         binding.btnDelete.visibility = View.VISIBLE
         binding.btnSave.text = getString(R.string.update)
+        binding.editId.isClickable = false
+        binding.editId.isFocusable = false
+        binding.editId.isEnabled = false
+        binding.editId.setTextColor(ContextCompat.getColorStateList(this, R.color.gray))
 
         binding.error.visibility = View.GONE
         binding.error2.visibility = View.GONE
@@ -75,19 +80,19 @@ class UpdateActivity : BaseActivity() {
             deleteItem(number!!)
         }
 
-        binding.editId.doOnTextChanged { text, start, before, count ->
+        binding.editId.doOnTextChanged { _, _, _, _ ->
             binding.error.visibility = View.GONE
             binding.errorId.visibility = View.GONE
             binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
-        binding.editProduct.doOnTextChanged { text, start, before, count ->
+        binding.editProduct.doOnTextChanged { _, _, _, _ ->
             binding.error2.visibility = View.GONE
             binding.errorProduct.visibility = View.GONE
             binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
-        binding.editDate.doOnTextChanged { text, start, before, count ->
+        binding.editDate.doOnTextChanged { _, _, _, _ ->
             binding.error3.visibility = View.GONE
             binding.errorDate.visibility = View.GONE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
@@ -106,7 +111,7 @@ class UpdateActivity : BaseActivity() {
             .set(product)
             .addOnSuccessListener {
                 Log.e(TAG, "DocumentSnapshot added with ID: ${product.number}")
-                Toast.makeText(applicationContext, "Produk Berhasil Ditambahkan !", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Produk Berhasil Diupdate !", Toast.LENGTH_SHORT).show()
                 finish()
             }
             .addOnFailureListener { e ->
@@ -114,8 +119,10 @@ class UpdateActivity : BaseActivity() {
             }
     }
 
-    // check data
-    private fun checkData(){
+
+    // check duplicate
+    private fun checkDuplicate(){
+
         // Get data from EditText field
         val product = Product(
             number = binding.editId.text.toString(),
@@ -128,39 +135,24 @@ class UpdateActivity : BaseActivity() {
             description = binding.editDesc.text.toString())
 
         db.collection("item_description")
-            .whereEqualTo("number", product.number)
-            .get()
-            .addOnSuccessListener { result ->
-                if (result.isEmpty){
-                    // If data is no exist in database
-                    checkDuplicate(product) // Check duplicate of product name in database
-                }else{
-                    // If there are duplicate id send message error
-                    binding.errorId.text = getString(R.string.errorID)
-                    binding.errorId.visibility = View.VISIBLE
-                }
-            }
-    }
-
-    // check duplicate
-    private fun checkDuplicate(product: Product){
-        db.collection("item_description")
             .whereEqualTo("product", product.product)
             .get()
             .addOnSuccessListener { result ->
-                if (result.isEmpty){
-                    // If data is no exist in database
-                    sendData(product)
-                }else{
-                    // If there are duplicate make a warning
-                    AlertDialog.Builder(this@UpdateActivity).apply {
+                for (document in result){
+                    if (result.isEmpty || document.data["product"] == oldProduct){
+                        // If data is no exist in database or same with field product
+                        Log.e(TAG, "input doc number : ${document["product"]} input $oldProduct")
+                        sendData(product)
+                    }else {
+                        AlertDialog.Builder(this@UpdateActivity).apply {
                         setTitle("Produk")
-                        setMessage("Produk ${product.product} sudah ada, tetap lanjutkan ?")
+                        setMessage("Produk ${document.data["product"]} sudah ada, tetap lanjutkan ?")
                         setNegativeButton("Batal"){dialog,_ -> dialog.dismiss()}
                         setPositiveButton("Lanjutkan"){dialog,_ ->
                             sendData(product)
                             dialog.dismiss()}
-                    }.show()
+                        }.show()
+                    }
                 }
             }
     }
@@ -192,7 +184,7 @@ class UpdateActivity : BaseActivity() {
 
     private fun checkDateFormat(){
         if (binding.editDate.text.isNullOrBlank()){
-            checkData()
+            checkDuplicate()
         }else if (binding.editDate.text!!.length in 1..9){
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
@@ -201,7 +193,7 @@ class UpdateActivity : BaseActivity() {
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
-        } else checkData()
+        } else checkDuplicate()
     }
 
     private fun detailProduct() {
@@ -219,6 +211,8 @@ class UpdateActivity : BaseActivity() {
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),
                     description = document["description"].toString())
+
+                oldProduct = items.product
 
                 binding.editId.setText(items.number.toString())
                 binding.editProduct.setText(items.product)
