@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.widget.doOnTextChanged
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -45,6 +46,7 @@ class HomeActivity : BaseActivity() {
 
     private fun setupView(){
         binding.fabAdd.visibility = View.GONE
+        binding.listButton.visibility = View.GONE
     }
 
     private fun setupList(){
@@ -84,6 +86,12 @@ class HomeActivity : BaseActivity() {
                 .putExtra("search", message))
             Log.e(TAG, "input $message")
             finish()
+        }
+
+        binding.search.doOnTextChanged { text, start, before, count ->
+            if (binding.search.text.isNotEmpty()){
+                binding.searchButton.visibility = View.VISIBLE
+            }else binding.searchButton.visibility = View.GONE
         }
 
     }

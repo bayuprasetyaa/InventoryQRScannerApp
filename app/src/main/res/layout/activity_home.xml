@@ -70,6 +70,7 @@
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_height="wrap_content"
 
             android:fontFamily="@font/poppins_light"
@@ -83,9 +84,9 @@
             android:id="@+id/search_button"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginStart="5dp"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/ic_search"/>
+            android:background="@drawable/ic_search"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
