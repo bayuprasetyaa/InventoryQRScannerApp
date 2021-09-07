@@ -31,11 +31,6 @@ class ItemAdapter (
         holder.binding.container.setOnClickListener{
             listener?.onClick(items)
         }
-        holder.binding.container.setOnLongClickListener{
-            listener?.onLongClick(items)
-            true
-        }
-
     }
 
     override fun getItemCount() = items.size
@@ -48,7 +43,6 @@ class ItemAdapter (
 
     interface AdapterListener {
         fun onClick(items: Product)
-        fun onLongClick(items: Product)
     }
 }
 

@@ -2,12 +2,10 @@ package com.ikm.inventoryqrscanner.activity
 
 import android.content.ContentValues.TAG
 import android.content.Intent
-import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.google.android.material.tabs.TabLayout
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -26,34 +24,32 @@ class HomeActivity : BaseActivity() {
     private val db by lazy { Firebase.firestore }
     private lateinit var adapter : ItemAdapter
     private var backPressedTime:Long = 0
-    lateinit var backToast:Toast
+    private lateinit var backToast:Toast
     private val preference by lazy { PreferenceManager(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView( binding.root )
 
         setupView()
-        setupBinding()
-        setupList()
-        setupListener()
-        message()
+        setupList() // list product function
+        setupListener() // Listener function
+        message() // message from other activity
     }
 
     override fun onStart() {
         super.onStart()
-        listItems()
-        checkUser()
+        listItems() // Receive data from database
+        checkUser() // check user type
     }
 
     private fun setupView(){
         binding.fabAdd.visibility = View.GONE
     }
 
-    private fun setupBinding() {
-        setContentView( binding.root )
-    }
-
     private fun setupList(){
+
+        // list the adapter
         adapter = ItemAdapter(arrayListOf(), object : ItemAdapter.AdapterListener{
             override fun onClick(items: Product) {
                 startActivity(
@@ -61,15 +57,12 @@ class HomeActivity : BaseActivity() {
                         .putExtra("number", items.number)
                 )
             }
-
-            override fun onLongClick(items: Product) {
-
-            }
-
         })
+
         binding.listItem.adapter = this.adapter
     }
 
+    // Fungsi button
     private fun setupListener(){
 
         binding.fabAdd.setOnClickListener {
@@ -89,20 +82,24 @@ class HomeActivity : BaseActivity() {
             val message = binding.search.text.toString()
             startActivity(Intent(this, ListActivity::class.java)
                 .putExtra("search", message))
-            Log.e(TAG, "input ${message}")
+            Log.e(TAG, "input $message")
             finish()
         }
 
     }
 
+    //-------------- External Function ----------------//
+
+    // Receive data from database
     private fun listItems() {
         db.collection("item_description")
             .orderBy("product")
-            .limit(3)
+            .limit(5) // Set max product to list
             .get()
             .addOnSuccessListener{ result -> setProduct(result) }
     }
 
+    // Put information from database to adapter
     private fun setProduct(result: QuerySnapshot) {
         val items: ArrayList<Product> = arrayListOf()
         for (document in result){
@@ -120,30 +117,32 @@ class HomeActivity : BaseActivity() {
             )
         }
         this.adapter.setData(items)
-
     }
 
+    // Check search message from ScanActivity -> searchMessage
     private fun message(){
-        if (intent.hasExtra("dataMessage")){
+        if (intent.hasExtra("searchMessage")){
             Toast.makeText(this, "Data Tidak Ditemukan", Toast.LENGTH_SHORT).show()
         }
     }
 
+    // Check user
+    // If admin fab_add = visible
+    private fun checkUser(){
+        if (preference.getBoolean("admin")){
+            binding.fabAdd.visibility = View.VISIBLE
+        }
+    }
+
+    // Twice Back pressed to close App
     override fun onBackPressed() {
-        backToast = Toast.makeText(this, "Press back again to leave the app.", Toast.LENGTH_LONG)
+        backToast = Toast.makeText(this, "Tekan kembali untuk keluar !", Toast.LENGTH_LONG)
         if (backPressedTime + 2000 > System.currentTimeMillis()){
-            this.finishAffinity();
-            System.exit(0);
-            super.onBackPressed()
+            this.finishAffinity()
+            exitProcess(0)
         }else{
             backToast.show()
         }
         backPressedTime = System.currentTimeMillis()
-    }
-
-    private fun checkUser(){
-        if (preference.getBoolean("admin") == true){
-            binding.fabAdd.visibility = View.VISIBLE
-        }
     }
 }

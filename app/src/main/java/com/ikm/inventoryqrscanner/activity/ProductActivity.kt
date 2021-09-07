@@ -107,11 +107,11 @@ class ProductActivity : BaseActivity() {
 
         startActivity(Intent(this, HomeActivity::class.java)
             .putExtra
-                ("dataMessage", message))
+                ("searchMessage", message))
     }
 
     override fun onBackPressed() {
-        startActivity(Intent(this, ListActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         super.onBackPressed()
     }
 
