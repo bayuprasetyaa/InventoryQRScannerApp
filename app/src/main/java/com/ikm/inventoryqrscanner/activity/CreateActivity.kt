@@ -16,12 +16,16 @@ import com.ikm.inventoryqrscanner.R
 import com.ikm.inventoryqrscanner.databinding.ActivityCreateBinding
 import com.ikm.inventoryqrscanner.fragment.DateFragment
 import com.ikm.inventoryqrscanner.model.Product
+import com.ikm.inventoryqrscanner.util.dateFormat
 import com.ikm.inventoryqrscanner.util.stringToTimestamp
+import java.util.*
 
 class CreateActivity : BaseActivity() {
 
     private val binding by lazy { ActivityCreateBinding.inflate(layoutInflater) }
     private val db by lazy { Firebase.firestore }
+    private var checkIdProduct: Boolean = false
+    private var dateFormat: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +37,14 @@ class CreateActivity : BaseActivity() {
 
     private fun setupView(){
         binding.btnDelete.visibility = View.GONE
+
         binding.error.visibility = View.GONE
         binding.error2.visibility = View.GONE
+        binding.error3.visibility = View.GONE
+
         binding.errorId.visibility = View.GONE
         binding.errorProduct.visibility = View.GONE
+        binding.errorDate.visibility = View.GONE
     }
 
     private fun setupListener() {
@@ -54,36 +62,14 @@ class CreateActivity : BaseActivity() {
 
         //Button Save
         binding.btnSave.setOnClickListener {
+            !checkIdProduct
+            !dateFormat
 
-            //Check the field
-            if (binding.editId.text.isNullOrEmpty() && binding.editProduct.text.isNullOrEmpty()){
-                binding.error.visibility = View.VISIBLE
-                binding.error2.visibility = View.VISIBLE
-                binding.errorId.visibility = View.VISIBLE
-                binding.errorProduct.visibility = View.VISIBLE
+            checkEmptyField()
+            checkDateFormat()
 
-                binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
-                binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
-
-            }else if (binding.editId.text.isNullOrEmpty()){
-                binding.error.visibility = View.VISIBLE
-                binding.errorId.visibility = View.VISIBLE
-            }else if (binding.editProduct.text.isNullOrEmpty()){
-                binding.error2.visibility = View.VISIBLE
-                binding.errorProduct.visibility = View.VISIBLE
-            }else{
-                // Get data from EditText field
-                val product = Product(
-                    number = binding.editId.text.toString(),
-                    product = binding.editProduct.text.toString(),
-                    expDate = stringToTimestamp(binding.editDate.text.toString()),
-                    amount = binding.editAmount.text.toString(),
-                    type = binding.editType.selectedItem.toString(),
-                    location = binding.editLocation.text.toString(),
-                    condition = binding.editCondition.selectedItem.toString(),
-                    description = binding.editDesc.text.toString())
-
-                checkData(product) // Check Id product if exist in database
+            if (dateFormat && checkIdProduct){
+                checkData()
             }
         }
 
@@ -97,6 +83,12 @@ class CreateActivity : BaseActivity() {
             binding.error2.visibility = View.GONE
             binding.errorProduct.visibility = View.GONE
             binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.black)
+        }
+
+        binding.editDate.doOnTextChanged { text, start, before, count ->
+            binding.error3.visibility = View.GONE
+            binding.errorDate.visibility = View.GONE
+            binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.black)
         }
     }
 
@@ -121,7 +113,18 @@ class CreateActivity : BaseActivity() {
     }
 
     // check data
-    private fun checkData(product: Product){
+    private fun checkData(){
+        // Get data from EditText field
+        val product = Product(
+            number = binding.editId.text.toString(),
+            product = binding.editProduct.text.toString(),
+            expDate = stringToTimestamp(binding.editDate.text.toString()),
+            amount = binding.editAmount.text.toString(),
+            type = binding.editType.selectedItem.toString(),
+            location = binding.editLocation.text.toString(),
+            condition = binding.editCondition.selectedItem.toString(),
+            description = binding.editDesc.text.toString())
+
         db.collection("item_description")
             .whereEqualTo("number", product.number)
             .get()
@@ -130,7 +133,7 @@ class CreateActivity : BaseActivity() {
                     // If data is no exist in database
                     checkDuplicate(product) // Check duplicate of product name in database
                 }else{
-                    // If Success, make toast
+                    // If there are duplicate id send message error
                     binding.errorId.text = getString(R.string.errorID)
                     binding.errorId.visibility = View.VISIBLE
                 }
@@ -147,7 +150,7 @@ class CreateActivity : BaseActivity() {
                     // If data is no exist in database
                     sendData(product)
                 }else{
-                    // If Success, make toast
+                    // If there are duplicate make a warning
                     AlertDialog.Builder(this@CreateActivity).apply {
                         setTitle("Produk")
                         setMessage("Produk ${product.product} sudah ada, tetap lanjutkan ?")
@@ -158,5 +161,42 @@ class CreateActivity : BaseActivity() {
                     }.show()
                 }
             }
+    }
+
+    //check empty field
+    private fun checkEmptyField() {
+        //Check the field
+        if (binding.editId.text.isNullOrEmpty() && binding.editProduct.text.isNullOrEmpty()){
+            binding.error.visibility = View.VISIBLE
+            binding.error2.visibility = View.VISIBLE
+            binding.errorId.visibility = View.VISIBLE
+            binding.errorProduct.visibility = View.VISIBLE
+
+            binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
+            binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
+
+        }else if (binding.editId.text.isNullOrEmpty()){
+            binding.error.visibility = View.VISIBLE
+            binding.errorId.visibility = View.VISIBLE
+        }else if (binding.editProduct.text.isNullOrEmpty()){
+            binding.error2.visibility = View.VISIBLE
+            binding.errorProduct.visibility = View.VISIBLE
+        }else{
+            checkIdProduct
+        }
+    }
+
+    private fun checkDateFormat() {
+        if (binding.editDate.text.toString() == ""){
+            dateFormat
+        }else if (binding.editDate.text!!.length in 1..9){
+            binding.error3.visibility = View.VISIBLE
+            binding.errorDate.visibility = View.VISIBLE
+            binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
+        } else if (!dateFormat(binding.editDate.text.toString())){
+            binding.error3.visibility = View.VISIBLE
+            binding.errorDate.visibility = View.VISIBLE
+            binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
+        } else dateFormat
     }
 }

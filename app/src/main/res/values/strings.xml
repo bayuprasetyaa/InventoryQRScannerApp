@@ -21,6 +21,7 @@
     <string name="errorMessagePass">Kata Sandi tidak boleh kosong !</string>
     <string name="error">Kolom tidak boleh kosong !</string>
     <string name="errorID">ID sudah terdaftar !</string>
+    <string name="errorDate">Format tanggal salah !</string>
 
     <!--Button Text-->
     <string name="submit">Masuk</string>

@@ -2,8 +2,6 @@ package com.ikm.inventoryqrscanner.util
 
 
 import com.google.firebase.Timestamp
-import java.text.DecimalFormat
-import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,18 +10,6 @@ fun timestampToString(timestamp: Timestamp?): String {
         val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         dateFormat.format(timestamp.toDate())
     } else ""
-}
-
-fun stringToDate(string: String?): Date? {
-    return if (string != null ) {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        dateFormat.parse(string)
-    } else null
-}
-
-fun amountFormat(number: Int): String{
-    val decimalFormat: NumberFormat = DecimalFormat("#,###")
-    return decimalFormat.format(number)
 }
 
 fun stringToTimestamp(date: String?): Timestamp?{
@@ -35,10 +21,11 @@ fun stringToTimestamp(date: String?): Timestamp?{
     } else null
 }
 
-fun intChecker(string: String?):Int?{
-    return if (string != ""){
-        string?.toInt()
-    }else null
-}
+fun dateFormat(string: String): Boolean {
+    var day = string.substring(0, 2)
+    var month = string.substring(3, 5)
+    var year = string.substring(6, 10)
 
+    return !(day.toInt() > 31 || month.toInt() > 12 || year.toInt() > 2100)
+}
 
