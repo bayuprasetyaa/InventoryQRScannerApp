@@ -16,15 +16,18 @@ class WelcomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        setupListener()
+        setupListener() //Fungsi button
     }
 
     private fun setupListener() {
+
+        // Button "mahasiswa" -> HomeActivity (preference_admin:False)
         binding.mahasiswa.setOnClickListener {
             prefererence.put("admin", false)
             startActivity(Intent(this, HomeActivity::class.java))
         }
 
+        // Button "admin" -> LoginActivity
         binding.dosen.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }

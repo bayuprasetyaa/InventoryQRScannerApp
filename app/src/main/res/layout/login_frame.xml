@@ -12,22 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/username"
-        app:hintTextColor="@color/gray"
+        app:hintTextColor="@color/teal_700"
 
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeWidth="0dp"
 
         app:startIconDrawable="@drawable/ic_username"
         app:startIconTint="@color/teal_700"
         app:endIconMode="clear_text"
 
         app:errorEnabled="true"
+        app:errorTextColor="@color/white"
         app:errorTextAppearance="@string/errorMessageUser"
-        app:errorTextColor="@color/red"
         app:errorIconDrawable="@drawable/ic_error"
-        app:errorIconTint="@color/red"
+        app:errorIconTint="@color/light_red"
+        app:errorContentDescription="@string/errorMessageUser"
 
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -36,7 +38,10 @@
             android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
+            android:textColorHint="@color/gray"
             android:textSize="14sp"
+            android:inputType="text"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="16sp"
             android:autoSizeStepGranularity="2sp"
@@ -46,17 +51,19 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
         android:id="@+id/passwordInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="@string/password"
-        app:hintTextColor="@color/gray"
+        app:hintTextColor="@color/teal_700"
 
         app:boxCornerRadiusBottomStart="20dp"
         app:boxCornerRadiusBottomEnd="20dp"
         app:boxCornerRadiusTopEnd="20dp"
         app:boxCornerRadiusTopStart="20dp"
+        app:boxStrokeWidth="0dp"
 
         app:startIconDrawable="@drawable/ic_lock"
         app:startIconTint="@color/teal_700"
@@ -64,9 +71,10 @@
 
         app:errorEnabled="true"
         app:errorTextAppearance="@string/errorMessagePass"
-        app:errorTextColor="@color/red"
+        app:errorTextColor="@color/white"
         app:errorIconDrawable="@drawable/ic_error"
-        app:errorIconTint="@color/red"
+        app:errorIconTint="@color/light_red"
+        app:errorContentDescription="@string/errorMessagePass"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +84,8 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/gray"
+            android:outlineProvider="none"
             android:textSize="14sp"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="16sp"
