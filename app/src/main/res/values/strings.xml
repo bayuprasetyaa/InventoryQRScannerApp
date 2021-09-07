@@ -2,6 +2,7 @@
     <string name="app_name">Inventory QR Scanner</string>
     <string name="imagedesc">Image Description</string>
 
+    <!--Data String Array-->
     <string-array name="condition">
         <item></item>
         <item>Baik</item>
@@ -15,19 +16,31 @@
         <item>Tidak Berbahaya</item>
     </string-array>
 
+    <!--String Message-->
+    <string name="errorMessageUser">Nama Pengguna tidak boleh kosong !</string>
+    <string name="errorMessagePass">Kata Sandi tidak boleh kosong !</string>
+
+    <!--Button Text-->
     <string name="submit">Masuk</string>
-    <string name="title">Inventaris \nLAB IKM</string>
     <string name="mahasiswa">Mahasiswa</string>
     <string name="dosen">Dosen</string>
-    <string name="username">Nama Pengguna</string>
-    <string name="password">Kata Sandi</string>
-
-    <string name="user">Pengguna</string>
-    <string name="welcome">Selamat Datang !</string>
-    <string name="hint">Cari Produk</string>
     <string name="scan">Scan</string>
     <string name="show">Tampilkan lebih banyak</string>
+    <string name="save">SIMPAN</string>
+    <string name="delete">HAPUS</string>
 
+
+    <!--Text View label-->
+    <string name="welcome">Selamat Datang !</string>
+    <string name="title">Inventaris \nLAB IKM</string>
+    <string name="user">Pengguna</string>
+
+    <!--Field text-->
+    <string name="username">Nama Pengguna</string>
+    <string name="password">Kata Sandi</string>
+    <string name="hint">Cari Produk</string>
+
+    <!--Field Create Product-->
     <string name="detail">Detail Produk</string>
     <string name="number">ID Produk</string>
     <string name="product">Nama Produk</string>
@@ -38,9 +51,6 @@
     <string name="condition">Kondisi</string>
     <string name="show_location">Tempat \nPenyimpanan</string>
     <string name="desc">Deskripsi</string>
-    <string name="save">SIMPAN</string>
-    <string name="delete">HAPUS</string>
-
     <string name="choose_date">Pilih Tanggal</string>
     <string name="title_activity_all_product">AllProductActivity</string>
     <!-- Strings used for fragments for navigation -->

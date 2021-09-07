@@ -130,7 +130,7 @@ class UpdateActivity : BaseActivity() {
                 Log.e(TAG, "Error getting documents.", exception) }
     }
 
-    private fun deleteItem(id: String){
+    private fun deleteItem(number: String){
         db.collection("item_description").document(number!!)
             .delete()
             .addOnSuccessListener {
