@@ -1,6 +1,5 @@
 package com.ikm.inventoryqrscanner.activity
 
-import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -24,15 +23,13 @@ class CreateActivity : BaseActivity() {
 
     private val binding by lazy { ActivityCreateBinding.inflate(layoutInflater) }
     private val db by lazy { Firebase.firestore }
-    private var checkIdProduct: Boolean = false
-    private var dateFormat: Boolean = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupView()
         setupListener() // Fungsi Button (Listener)
-
     }
 
     private fun setupView(){
@@ -62,33 +59,25 @@ class CreateActivity : BaseActivity() {
 
         //Button Save
         binding.btnSave.setOnClickListener {
-            !checkIdProduct
-            !dateFormat
-
             checkEmptyField()
-            checkDateFormat()
-
-            if (dateFormat && checkIdProduct){
-                checkData()
-            }
         }
 
         binding.editId.doOnTextChanged { text, start, before, count ->
             binding.error.visibility = View.GONE
             binding.errorId.visibility = View.GONE
-            binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.black)
+            binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
         binding.editProduct.doOnTextChanged { text, start, before, count ->
             binding.error2.visibility = View.GONE
             binding.errorProduct.visibility = View.GONE
-            binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.black)
+            binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
         binding.editDate.doOnTextChanged { text, start, before, count ->
             binding.error3.visibility = View.GONE
             binding.errorDate.visibility = View.GONE
-            binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.black)
+            binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
     }
 
@@ -164,7 +153,7 @@ class CreateActivity : BaseActivity() {
     }
 
     //check empty field
-    private fun checkEmptyField() {
+    private fun checkEmptyField(){
         //Check the field
         if (binding.editId.text.isNullOrEmpty() && binding.editProduct.text.isNullOrEmpty()){
             binding.error.visibility = View.VISIBLE
@@ -178,17 +167,19 @@ class CreateActivity : BaseActivity() {
         }else if (binding.editId.text.isNullOrEmpty()){
             binding.error.visibility = View.VISIBLE
             binding.errorId.visibility = View.VISIBLE
+
         }else if (binding.editProduct.text.isNullOrEmpty()){
             binding.error2.visibility = View.VISIBLE
             binding.errorProduct.visibility = View.VISIBLE
+
         }else{
-            checkIdProduct
+            checkDateFormat()
         }
     }
 
-    private fun checkDateFormat() {
-        if (binding.editDate.text.toString() == ""){
-            dateFormat
+    private fun checkDateFormat(){
+        if (binding.editDate.text.isNullOrBlank()){
+            checkData()
         }else if (binding.editDate.text!!.length in 1..9){
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
@@ -197,6 +188,6 @@ class CreateActivity : BaseActivity() {
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
-        } else dateFormat
+        } else checkData()
     }
 }
