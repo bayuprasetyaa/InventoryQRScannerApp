@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ikm.inventoryqrscanner.databinding.FragmentDateBinding
 
-class DateFragment(var listener: DateListener) : BottomSheetDialogFragment() {
+class DateFragment(private var listener: DateListener) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentDateBinding
     private var date: String = ""

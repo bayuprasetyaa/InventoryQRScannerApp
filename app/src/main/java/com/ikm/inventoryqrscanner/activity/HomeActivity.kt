@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -101,7 +102,7 @@ class HomeActivity : BaseActivity() {
     // Receive data from database
     private fun listItems() {
         db.collection("item_description")
-            .orderBy("product")
+            .orderBy("count", Query.Direction.DESCENDING)
             .limit(10) // Set max product to list
             .get()
             .addOnSuccessListener{ result ->
@@ -130,7 +131,9 @@ class HomeActivity : BaseActivity() {
                     type = document.data["type"].toString(),
                     location = document.data["location"].toString(),
                     condition = document.data["condition"].toString(),
-                    description = document.data["description"].toString()
+                    description = document.data["description"].toString(),
+                    created = document.data["created"] as Timestamp,
+                    count = document.data["count"].toString().toInt()
                 )
             )
         }

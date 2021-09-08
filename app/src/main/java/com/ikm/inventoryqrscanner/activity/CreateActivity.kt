@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
@@ -112,7 +113,9 @@ class CreateActivity : BaseActivity() {
             type = binding.editType.selectedItem.toString(),
             location = binding.editLocation.text.toString(),
             condition = binding.editCondition.selectedItem.toString(),
-            description = binding.editDesc.text.toString())
+            description = binding.editDesc.text.toString(),
+            created = Timestamp.now(),
+            count = 0)
 
         db.collection("item_description")
             .whereEqualTo("number", product.number)

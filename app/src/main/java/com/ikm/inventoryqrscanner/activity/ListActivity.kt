@@ -91,7 +91,9 @@ class ListActivity : BaseActivity() {
                     type = document.data["type"].toString(),
                     location = document.data["location"].toString(),
                     condition = document.data["condition"].toString(),
-                    description = document.data["description"].toString()
+                    description = document.data["description"].toString(),
+                    created = document.data["created"] as? Timestamp,
+                    count = document.data["count"].toString().toInt()
                 )
             )
         }

@@ -26,7 +26,8 @@ class UpdateActivity : BaseActivity() {
     private val db by lazy { Firebase.firestore }
     private val number by lazy { intent.getStringExtra("number") }
     private lateinit var items: Product
-    private var oldProduct: String? = null
+    private lateinit var oldProduct: String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,8 +43,11 @@ class UpdateActivity : BaseActivity() {
     }
 
     private fun setupView(){
+        binding.container.requestFocus()
+
         binding.btnDelete.visibility = View.VISIBLE
         binding.btnSave.text = getString(R.string.update)
+
         binding.editId.isClickable = false
         binding.editId.isFocusable = false
         binding.editId.isEnabled = false
@@ -73,7 +77,7 @@ class UpdateActivity : BaseActivity() {
 
         //Button Save
         binding.btnSave.setOnClickListener {
-            checkEmptyField()
+            checkDateFormat()
         }
 
         binding.btnDelete.setOnClickListener {
@@ -123,35 +127,28 @@ class UpdateActivity : BaseActivity() {
     // check duplicate
     private fun checkDuplicate(){
 
-        // Get data from EditText field
-        val product = Product(
-            number = binding.editId.text.toString(),
-            product = binding.editProduct.text.toString(),
-            expDate = stringToTimestamp(binding.editDate.text.toString()),
-            amount = binding.editAmount.text.toString(),
-            type = binding.editType.selectedItem.toString(),
-            location = binding.editLocation.text.toString(),
-            condition = binding.editCondition.selectedItem.toString(),
-            description = binding.editDesc.text.toString())
-
         db.collection("item_description")
-            .whereEqualTo("product", product.product)
+            .whereEqualTo("product", items.product)
             .get()
             .addOnSuccessListener { result ->
-                for (document in result){
-                    if (result.isEmpty || document.data["product"] == oldProduct){
-                        // If data is no exist in database or same with field product
-                        Log.e(TAG, "input doc number : ${document["product"]} input $oldProduct")
-                        sendData(product)
-                    }else {
-                        AlertDialog.Builder(this@UpdateActivity).apply {
-                        setTitle("Produk")
-                        setMessage("Produk ${document.data["product"]} sudah ada, tetap lanjutkan ?")
-                        setNegativeButton("Batal"){dialog,_ -> dialog.dismiss()}
-                        setPositiveButton("Lanjutkan"){dialog,_ ->
-                            sendData(product)
-                            dialog.dismiss()}
-                        }.show()
+                if (result.isEmpty){
+                    checkEmptyField()
+                }else{
+                    for (document in result){
+                        if (document.data["product"] == oldProduct){
+                            // If data is no exist in database or same with field product
+                            Log.e(TAG, "input doc number : ${document["product"]} input $oldProduct")
+                            checkEmptyField()
+                        }else {
+                            AlertDialog.Builder(this@UpdateActivity).apply {
+                                setTitle("Produk")
+                                setMessage("Produk ${document.data["product"]} sudah ada, tetap lanjutkan ?")
+                                setNegativeButton("Batal"){dialog,_ -> dialog.dismiss()}
+                                setPositiveButton("Lanjutkan"){dialog,_ ->
+                                    checkEmptyField()
+                                    dialog.dismiss()}
+                            }.show()
+                        }
                     }
                 }
             }
@@ -178,14 +175,18 @@ class UpdateActivity : BaseActivity() {
             binding.errorProduct.visibility = View.VISIBLE
 
         }else{
-            checkDateFormat()
+            sendData(items)
         }
     }
 
     private fun checkDateFormat(){
+
+        Log.e(TAG, "Text : ${binding.editDate.text!!.length}")
         if (binding.editDate.text.isNullOrBlank()){
+            getDataFromField()
             checkDuplicate()
         }else if (binding.editDate.text!!.length in 1..9){
+            Log.e(TAG, "Text :Berhasil !!!! ${binding.editDate.text!!.length}")
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
@@ -193,7 +194,10 @@ class UpdateActivity : BaseActivity() {
             binding.error3.visibility = View.VISIBLE
             binding.errorDate.visibility = View.VISIBLE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.light_red)
-        } else checkDuplicate()
+        } else {
+            getDataFromField()
+            checkDuplicate()
+        }
     }
 
     private fun detailProduct() {
@@ -210,9 +214,11 @@ class UpdateActivity : BaseActivity() {
                     type = document["type"].toString(),
                     location = document["location"].toString(),
                     condition = document["condition"].toString(),
-                    description = document["description"].toString())
+                    description = document["description"].toString(),
+                    created = document["created"] as Timestamp,
+                    count = document["count"].toString().toInt())
 
-                oldProduct = items.product
+                oldProduct = items.product.toString()
 
                 binding.editId.setText(items.number.toString())
                 binding.editProduct.setText(items.product)
@@ -237,5 +243,17 @@ class UpdateActivity : BaseActivity() {
                 finish()
             }
             .addOnFailureListener {  }
+    }
+
+    private fun getDataFromField(){
+        // Get data from EditText field
+        items.number = binding.editId.text.toString()
+        items.product = binding.editProduct.text.toString()
+        items.expDate = stringToTimestamp(binding.editDate.text.toString())
+        items.amount = binding.editAmount.text.toString()
+        items.type = binding.editType.selectedItem.toString()
+        items.location = binding.editLocation.text.toString()
+        items.condition = binding.editCondition.selectedItem.toString()
+        items.description = binding.editDesc.text.toString()
     }
 }

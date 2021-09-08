@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.ikm.inventoryqrscanner.BaseActivity
@@ -61,7 +62,9 @@ class ProductActivity : BaseActivity() {
             .addOnSuccessListener { document ->
                 run {
                     if (document["number"] != null) {
-                        sendData(document) // Send data to firestore
+                        receiveData(document) // Receive data to firestore
+                        addCount(document)
+                        Log.e(TAG, "Set Count : ${items.count+1}")
                     } else {
                         sendMessage() // send message to Home ("Data tidak ditemukan !)"
                     }
@@ -71,7 +74,7 @@ class ProductActivity : BaseActivity() {
                 Log.e(TAG, "Error getting documents.", exception) }
     }
 
-    private fun sendData(document: DocumentSnapshot){
+    private fun receiveData(document: DocumentSnapshot){
         items = Product(
             number = document["number"].toString(),
             product = document["product"].toString(),
@@ -80,7 +83,9 @@ class ProductActivity : BaseActivity() {
             type = document["type"].toString(),
             location = document["location"].toString(),
             condition = document["condition"].toString(),
-            description = document["description"].toString()
+            description = document["description"].toString(),
+            created = document["created"] as Timestamp,
+            count = document["count"].toString().toInt()
         )
 
         binding.id.text = items.number.toString()
@@ -111,5 +116,11 @@ class ProductActivity : BaseActivity() {
         if (preference.getBoolean("admin")){
             binding.btnEdit.visibility = View.VISIBLE
         }
+    }
+
+    private fun addCount(document: DocumentSnapshot){
+        db.collection("item_description")
+            .document(document["number"].toString())
+            .update("count", items.count + 1)
     }
 }

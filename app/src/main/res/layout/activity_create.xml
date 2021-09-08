@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -263,7 +264,7 @@
             app:layout_constraintTop_toBottomOf="@+id/label_location"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="Lokasi"
-            android:inputType="textCapSentences"
+            android:inputType="textCapSentences|textNoSuggestions"
             android:textColor="@color/black"
             android:fontFamily="@font/poppins"
             android:textSize="16sp"/>
@@ -313,7 +314,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/label_desc"
             app:layout_constraintStart_toStartOf="parent"
-            android:inputType="textMultiLine"
+            android:inputType="textMultiLine|textNoSuggestions"
             android:gravity="top"
             android:lines="4"
             android:maxLines="4"

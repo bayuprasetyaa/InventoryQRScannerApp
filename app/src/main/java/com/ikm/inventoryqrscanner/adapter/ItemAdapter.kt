@@ -9,8 +9,8 @@ import com.ikm.inventoryqrscanner.model.Product
 import com.ikm.inventoryqrscanner.util.timestampToString
 
 class ItemAdapter (
-    var items : ArrayList<Product>,
-    var listener: AdapterListener?
+    private var items : ArrayList<Product>,
+    private var listener: AdapterListener?
     ): RecyclerView.Adapter<ItemAdapter.ViewHolder>(){
 
     class ViewHolder(val binding: AdapterItemBinding): RecyclerView.ViewHolder(binding.root)
