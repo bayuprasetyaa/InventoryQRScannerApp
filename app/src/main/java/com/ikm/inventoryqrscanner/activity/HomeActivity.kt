@@ -88,7 +88,7 @@ class HomeActivity : BaseActivity() {
             finish()
         }
 
-        binding.search.doOnTextChanged { text, start, before, count ->
+        binding.search.doOnTextChanged { _, _, _, _ ->
             if (binding.search.text.isNotEmpty()){
                 binding.searchButton.visibility = View.VISIBLE
             }else binding.searchButton.visibility = View.GONE

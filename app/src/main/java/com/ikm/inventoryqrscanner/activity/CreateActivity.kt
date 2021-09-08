@@ -62,19 +62,19 @@ class CreateActivity : BaseActivity() {
             checkEmptyField()
         }
 
-        binding.editId.doOnTextChanged { text, start, before, count ->
+        binding.editId.doOnTextChanged { _, _, _, _ ->
             binding.error.visibility = View.GONE
             binding.errorId.visibility = View.GONE
             binding.editId.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
-        binding.editProduct.doOnTextChanged { text, start, before, count ->
+        binding.editProduct.doOnTextChanged { _, _, _, _ ->
             binding.error2.visibility = View.GONE
             binding.errorProduct.visibility = View.GONE
             binding.editProduct.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)
         }
 
-        binding.editDate.doOnTextChanged { text, start, before, count ->
+        binding.editDate.doOnTextChanged { _, _, _, _ ->
             binding.error3.visibility = View.GONE
             binding.errorDate.visibility = View.GONE
             binding.editDate.backgroundTintList = ContextCompat.getColorStateList(this, R.color.teal_200)

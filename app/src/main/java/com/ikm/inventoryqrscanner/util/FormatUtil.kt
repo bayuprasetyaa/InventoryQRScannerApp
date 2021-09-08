@@ -22,9 +22,9 @@ fun stringToTimestamp(date: String?): Timestamp?{
 }
 
 fun dateFormat(string: String): Boolean {
-    var day = string.substring(0, 2)
-    var month = string.substring(3, 5)
-    var year = string.substring(6, 10)
+    val day = string.substring(0, 2)
+    val month = string.substring(3, 5)
+    val year = string.substring(6, 10)
 
     return !(day.toInt() > 31 || month.toInt() > 12 || year.toInt() > 2100)
 }
